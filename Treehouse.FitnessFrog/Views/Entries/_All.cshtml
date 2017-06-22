@@ -1,0 +1,73 @@
+﻿
+@model Treehouse.FitnessFrog.Models.Entry
+
+@using Treehouse.FitnessFrog.Models
+
+@Html.ValidationSummary("The following errors were found: ", new { @class = "alert alert-danger" })
+
+@using (Html.BeginForm())
+{
+	<div class="row">
+
+		<div class="col-md-6">
+
+			<div class="form-group">
+				@Html.LabelFor(m => m.Date, new { @class = "control-label" })
+				@Html.TextBoxFor(m => m.Date, "{0:d}", new { @class = "form-control datepicker" })
+
+
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(m => m.ActivityId, new { @class = "control-label" })
+				@Html.DropDownListFor(m => m.ActivityId, (SelectList)ViewBag.SelectListItem, "Pick an Item",
+		new { @class = "form-control" })
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(m => m.Duration, new { @class = "control-label" })
+				@Html.TextBoxFor(m => m.Duration, new { @class = "form-control" })
+			</div>
+
+			<div class="form-group">
+				@Html.LabelFor(m => m.Intensity, new { @class = "control-label" })<br />
+				<label class="radio-inline">
+					@Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.Low) Low
+				</label>
+				<label class="radio-inline">
+					@Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.Medium) Medium
+				</label>
+				<label class="radio-inline">
+					@Html.RadioButtonFor(m => m.Intensity, Entry.IntensityLevel.High) High
+				</label>
+			</div>
+
+			<div class="form-group">
+				Exclude @Html.CheckBoxFor(m => m.Exclude)
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+
+			<div class="form-group">
+				@Html.LabelFor(m => m.Notes, new { @class = "control-label" })
+				@Html.TextAreaFor(m => m.Notes, 14, 20, new { @class = "form-control" })
+			</div>
+
+		</div>
+
+		<div class="col-md-12">
+			<div class="pad-top">
+				<button type="submit" class="btn btn-success btn-lg margin-right">
+					<span class="glyphicon glyphicon-save"></span> Save
+				</button>
+				<a href="@Url.Action("Index")" class="btn btn-warning btn-lg">
+					<span class="glyphicon glyphicon-remove"></span> Cancel
+				</a>
+			</div>
+		</div>
+
+	</div>
+}
+

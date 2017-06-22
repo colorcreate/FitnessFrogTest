@@ -1,0 +1,68 @@
+﻿@model Treehouse.FitnessFrog.Models.Entry
+@{
+	ViewBag.Title = "Delete Entry";
+	TempData["Message"] = "Your entry was succesfully deleted!";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+<div class="alert alert-danger">
+	Are you sure you want to delete the following entry?
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+
+		<div class="row">
+			<div class="col-xs-4 col-sm-3">
+				<label>Date</label>
+			</div>
+			<div class="col-xs-8 col-sm-9">
+				@Model.Date.ToShortDateString()
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4 col-sm-3">
+				<label>Activity</label>
+			</div>
+			<div class="col-xs-8 col-sm-9">
+				@Model.Activity.Name
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4 col-sm-3">
+				<label>Duration</label>
+			</div>
+			<div class="col-xs-8 col-sm-9">
+				@Model.Duration
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-4 col-sm-3">
+				<label>Intensity</label>
+			</div>
+			<div class="col-xs-8 col-sm-9">
+				@Model.Intensity
+			</div>
+		</div>
+
+		<form method="post">
+			<div class="pad-top">
+				<button type="submit" class="btn btn-danger btn-lg margin-right">
+					<span class="glyphicon glyphicon-trash"></span> Delete
+				</button>
+				<a href="/" class="btn btn-warning btn-lg">
+					<span class="glyphicon glyphicon-remove"></span> Cancel
+				</a>
+			</div>
+		</form>
+
+	</div>
+
+</div>
+}
